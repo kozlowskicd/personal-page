@@ -1,25 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Home from '../Home/Home';
 import AboutMe from '../AboutMe/AboutMe';
 import Projects from '../Projects/Projects';
 
-import HeaderNavStyles from './HeaderNav.scss';
+import './HeaderNav.scss';
 
-export default function HeaderNav(props) {
+
+
+const HeaderNav = props => {
+
+  const [menu, toggleMenu] = useState('closed');
+  
+  const handleMenuClick = () => {
+    switch(menu) {
+      case 'closed':
+        toggleMenu('open');
+        return;
+      case 'open':
+        toggleMenu('closed');
+        return;
+      default:
+        toggleMenu('open');
+        return;
+      }
+  }
+
   return(
     <Router>
-      <div style={HeaderNavStyles} className='header-nav'>
+      <div className={`header-nav-${menu}`} onClick={() => handleMenuClick()}>
         <nav>
-          <ul>
-            <li>
+          <ul className={`menu-${menu}`}>
+            <li className={`list-item-${menu}`}>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className={`list-item-${menu}`}>
               <Link to="/aboutme/">About Me</Link>
             </li>
-            <li>
+            <li className={`list-item-${menu}`}>
               <Link to="/projects/">Projects</Link>
             </li>
           </ul>
@@ -31,3 +50,5 @@ export default function HeaderNav(props) {
     </Router>
   );
 }
+
+export default HeaderNav;

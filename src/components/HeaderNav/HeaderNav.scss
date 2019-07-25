@@ -1,32 +1,89 @@
-.header-nav {
-  width: 100%;
-  height: 2rem;
-  background-color: #69d9fa;
-
-  nav {
-
-    ul {
-      list-style: none;
-      display: flex;
-      
-      li {
-        line-height: 2rem;
-        margin-left: 2rem;
-        font-size: 1.5rem;
-        font-family: monospace;
-        font-weight: bold;
-
-        a {
-          padding-left: 0.5rem;
-          padding-right: 0.5rem;
-          text-decoration: none;
-          color: darkslategray;
-        }
-
-        a:hover {
-          background-color: #50d3fa;
+@media only screen and (min-width: 600px) {
+  .header-nav-open, .header-nav-closed {
+    width: 100%;
+    height: 2rem;
+    background-color: #69d9fa;
+  
+    nav {
+  
+      .menu-open, .menu-closed {
+        list-style: none;
+        display: flex;
+        
+        .list-item-open, .list-item-closed {
+          line-height: 2rem;
+          margin-left: 2rem;
+          font-size: 1.5rem;
+          font-family: monospace;
+          font-weight: bold;
+  
+          a {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            text-decoration: none;
+            color: darkslategray;
+          }
+  
+          a:hover {
+            background-color: #50d3fa;
+          }
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-nav-closed {
+    height: 2rem;
+    width: 2rem;
+    left: 1rem;
+    background-color: #69d9fa;
+    border-radius: .2rem;
+
+      .menu-closed {
+        display: block;
+        left: 0rem;
+        padding-top: .28rem;
+      }
+      .list-item-closed {
+        background-color: white;
+        width: 1.4rem;
+        height: .25rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: .28rem;
+        border-radius: .5rem;
+
+        a {
+          display: none;
+        }
+
+      }
+      
+      .list-item-closed:first-child {
+        margin-top: 0rem
+      }
+    }
+
+  .header-nav-open {
+    position: fixed;
+    top: 0rem;
+    z-index: 100;
+    width: 10rem;
+    height: 17rem;
+    background-color: #69d9fa
+  }
+
+  .menu-open {
+    display: list-item;
+  }
+
+  .list-item-open {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 2rem;
   }
 }
